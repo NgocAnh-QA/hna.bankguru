@@ -235,7 +235,7 @@ public class AbstractTest {
 		}
 	}
 
-	protected int getRandomNumber() {
+	protected static int getRandomNumber() {
 		Random rand = new Random();
 		return rand.nextInt(9999);
 	}

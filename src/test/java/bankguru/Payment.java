@@ -39,7 +39,7 @@ public class Payment extends AbstractTest {
         loginPage = PageGeneratorManager.getLoginPage(driver);
 
         log.info("Payment - Pre condition: Step 02: Login to system");
-        homePage = loginPage.loginToSystem(RegisterToSystem.EMAIL, RegisterToSystem.PASSWORD);
+        homePage = loginPage.loginToSystem(RegisterToSystem.USERID, RegisterToSystem.PASSWORD);
 
     }
 
@@ -57,26 +57,26 @@ public class Payment extends AbstractTest {
         log.info("Payment - Create new customer: Step 01: Input to Date of birth text box with value: " + customerData.getDateOfBirth_01());
         newCustomerPage.inputToDateOfBirthTextBox(customerData.getDateOfBirth_01());
 
-        log.info("Payment - Create new customer: Step 01: Input to Address text box with value: ");
-        newCustomerPage.inputToAddressTextBox("");
+        log.info("Payment - Create new customer: Step 01: Input to Address text box with value: " + customerData.getAddress_01());
+        newCustomerPage.inputToAddressTextBox(customerData.getAddress_01());
 
-        log.info("Payment - Create new customer: Step 01: Input to City text box with value: ");
-        newCustomerPage.inputToCityTextBox("");
+        log.info("Payment - Create new customer: Step 01: Input to City text box with value: " + customerData.getCity_01());
+        newCustomerPage.inputToCityTextBox(customerData.getCity_01());
 
-        log.info("Payment - Create new customer: Step 01: Input to State text box with value: ");
-        newCustomerPage.inputToStateTextBox("");
+        log.info("Payment - Create new customer: Step 01: Input to State text box with value: " + customerData.getState_01());
+        newCustomerPage.inputToStateTextBox(customerData.getState_01());
 
-        log.info("Payment - Create new customer: Step 01: Input to PIN text box with value: ");
-        newCustomerPage.inputToPINTextBox("");
+        log.info("Payment - Create new customer: Step 01: Input to PIN text box with value: " + customerData.getPin_01());
+        newCustomerPage.inputToPINTextBox(customerData.getPin_01());
 
-        log.info("Payment - Create new customer: Step 01: Input to Mobile Number text box with value: ");
-        newCustomerPage.inputToMobileNumberTextBox("");
+        log.info("Payment - Create new customer: Step 01: Input to Mobile Number text box with value: "+ customerData.getMobileNumber_01());
+        newCustomerPage.inputToMobileNumberTextBox(customerData.getMobileNumber_01());
 
-        log.info("Payment - Create new customer: Step 01: Input to Email text box with value: ");
-        newCustomerPage.inputToEmailTextBox("");
+        log.info("Payment - Create new customer: Step 01: Input to Email text box with value: " + RegisterToSystem.EMAIL);
+        newCustomerPage.inputToEmailTextBox(RegisterToSystem.EMAIL);
 
-        log.info("Payment - Create new customer: Step 01: Input to Password text box with value: ");
-        newCustomerPage.inputToPasswordTextBox("");
+        log.info("Payment - Create new customer: Step 01: Input to Password text box with value: " + customerData.getPassword_01());
+        newCustomerPage.inputToPasswordTextBox(customerData.getPassword_01());
 
         log.info("Payment - Create new customer: Step 01: Click to Submit button");
         newCustomerPage.clickToSubmitButton();
@@ -85,32 +85,31 @@ public class Payment extends AbstractTest {
         verifyTrue(newCustomerPage.isSuccessMessageDisplayed());
 
         log.info("Payment - Create new customer: Step 01: Verify Customer Name displayed correctly");
-        verifyEquals(newCustomerPage.getCustomerNameText(), "");
+        verifyEquals(newCustomerPage.getCustomerNameText(), customerData.getCustomerName_01());
 
         log.info("Payment - Create new customer: Step 01: Verify Gender Female  displayed correctly");
-        verifyEquals(newCustomerPage.getGenderText(), "");
+        verifyEquals(newCustomerPage.getGenderText(), customerData.getGender_01());
 
         log.info("Payment - Create new customer: Step 01: Verify Date of birth displayed correctly");
-        verifyEquals(newCustomerPage.getDateOfBirthText(), "");
+        verifyEquals(newCustomerPage.getDateOfBirthText(), customerData.getDateOfBirth_01());
 
         log.info("Payment - Create new customer: Step 01: Verify Address displayed correctly");
-        verifyEquals(newCustomerPage.getAddressText(), "");
+        verifyEquals(newCustomerPage.getAddressText(), customerData.getAddress_01());
 
         log.info("Payment - Create new customer: Step 01: Verify City displayed correctly");
-        verifyEquals(newCustomerPage.getCityText(), "");
+        verifyEquals(newCustomerPage.getCityText(), customerData.getCity_01());
 
         log.info("Payment - Create new customer: Step 01: Verify State displayed correctly");
-        verifyEquals(newCustomerPage.getStateText(), "");
+        verifyEquals(newCustomerPage.getStateText(), customerData.getState_01());
 
         log.info("Payment - Create new customer: Step 01: Verify PIN displayed correctly");
-        verifyEquals(newCustomerPage.getPinText(), "");
+        verifyEquals(newCustomerPage.getPinText(), customerData.getPin_01());
 
         log.info("Payment - Create new customer: Step 01: Verify Mobile Number displayed correctly");
-        verifyEquals(newCustomerPage.getMobileNumberText(), "");
+        verifyEquals(newCustomerPage.getMobileNumberText(), customerData.getMobileNumber_01());
 
         log.info("Payment - Create new customer: Step 01: Verify Email displayed correctly");
-        verifyEquals(newCustomerPage.getEmailText(), "");
-
+        verifyEquals(newCustomerPage.getEmailText(), RegisterToSystem.EMAIL);
 
 
     }

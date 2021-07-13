@@ -10,9 +10,9 @@ import pageObjects.LoginPO;
 import pageObjects.RegisterPO;
 
 public class RegisterToSystem extends AbstractTest {
-    public static String EMAIL, PASSWORD;
-    int randomNumber = getRandomNumber();
-    String postEmail = randomNumber + "@hotmail.com";
+    public static String USERID, PASSWORD;
+    static int randomNumber = getRandomNumber();
+    static String EMAIL = "simon" + randomNumber + "@hotmail.com";
     WebDriver driver;
     Environment evn;
     private LoginPO loginPage;
@@ -33,13 +33,13 @@ public class RegisterToSystem extends AbstractTest {
         registerPage = loginPage.clickToHereRegisterLink();
 
         log.info("Register to system - Step 01: Input to Email text box");
-        registerPage.inputToEmailTextBox("simon.test" + postEmail);
+        registerPage.inputToEmailTextBox(EMAIL);
 
         log.info("Register to system - Step 01: Click to Submit button");
         registerPage.clickToSubmitButton();
 
         log.info("Register to system - Step 01: Get User ID value");
-        EMAIL = registerPage.getTextUserIDValue();
+        USERID = registerPage.getTextUserIDValue();
 
         log.info("Register to system - Step 01: Get Password value");
         PASSWORD = registerPage.getTextPasswordValue();
@@ -48,7 +48,6 @@ public class RegisterToSystem extends AbstractTest {
         closeBrowserAndDriver(driver);
 
     }
-
 
 
 }

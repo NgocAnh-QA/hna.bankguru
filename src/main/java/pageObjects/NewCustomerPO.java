@@ -5,10 +5,15 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import pageUIs.NewCustomerPageUI;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 public class NewCustomerPO extends AbstractPage {
     WebDriver driver;
 
-    public NewCustomerPO(WebDriver driver){
+    public NewCustomerPO(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -18,31 +23,23 @@ public class NewCustomerPO extends AbstractPage {
     }
 
     public void clickToGenderRadioButton(String genderValue) {
-        if (genderValue.equals("female")){
+        if (genderValue.equals("female")) {
             waitForElementVisible(driver, NewCustomerPageUI.FEMALE_GENDER_RADIO_BUTTON);
             clickToElement(driver, NewCustomerPageUI.FEMALE_GENDER_RADIO_BUTTON);
-        }
-        else{
+        } else {
             waitForElementVisible(driver, NewCustomerPageUI.MALE_GENDER_RADIO_BUTTON);
             clickToElement(driver, NewCustomerPageUI.MALE_GENDER_RADIO_BUTTON);
         }
 
     }
 
-    public void clickToGenderMaleRadioButton() {
-        waitForElementVisible(driver, NewCustomerPageUI.MALE_GENDER_RADIO_BUTTON);
-        clickToElement(driver, NewCustomerPageUI.MALE_GENDER_RADIO_BUTTON);
-    }
-
     public void inputToDateOfBirthTextBox(String dateOfBirth) {
         waitForElementVisible(driver, NewCustomerPageUI.DATE_OF_BIRTH_TEXT_BOX);
-        String dayAndMonthOfBirth = dateOfBirth.substring(0, dateOfBirth.lastIndexOf("/"));
-
-        sendKeyToElement(driver, NewCustomerPageUI.DATE_OF_BIRTH_TEXT_BOX, dayAndMonthOfBirth);
-        sendKeyBoardToElement(driver, NewCustomerPageUI.DATE_OF_BIRTH_TEXT_BOX, Keys.TAB);
-
-        String yearOfBirth = dateOfBirth.substring(dateOfBirth.lastIndexOf("/")+1);
-        sendKeyToElement(driver, NewCustomerPageUI.DATE_OF_BIRTH_TEXT_BOX, yearOfBirth);
+        String[] formatBirthday = dateOfBirth.split("-");
+        sendKeyToElement(driver, NewCustomerPageUI.DATE_OF_BIRTH_TEXT_BOX, formatBirthday[2]);
+        sendKeyToElement(driver, NewCustomerPageUI.DATE_OF_BIRTH_TEXT_BOX, formatBirthday[1]);
+        sendKeyBoardToElement(driver, NewCustomerPageUI.DATE_OF_BIRTH_TEXT_BOX, Keys.ARROW_RIGHT);
+        sendKeyToElement(driver, NewCustomerPageUI.DATE_OF_BIRTH_TEXT_BOX, formatBirthday[0]);
     }
 
     public void inputToAddressTextBox(String address) {

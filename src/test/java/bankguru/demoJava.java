@@ -2,15 +2,16 @@ package bankguru;
 
 import commons.AbstractTest;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class demoJava extends AbstractTest {
-    int randomNumber = getRandomNumber();
-    String postEmail = randomNumber + "@hotmail.com";
 
     public static void main(String[] args) {
-        demoJava demo = new demoJava();
-        System.out.println(demo.postEmail);
-        System.out.println(demo.postEmail);
-        System.out.println(demo.postEmail);
-        System.out.println(demo.postEmail);
+       String demo = "1989-12-24";
+       String[] charDemo = demo.split("-");
+        System.out.println(charDemo[0]);
+        System.out.println(charDemo[1]);
+        System.out.println(charDemo[2]);
     }
 }

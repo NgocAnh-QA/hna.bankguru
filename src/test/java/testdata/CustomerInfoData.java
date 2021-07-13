@@ -86,5 +86,4 @@ public class CustomerInfoData {
         return customer_01.password;
     }
 
-
 }
