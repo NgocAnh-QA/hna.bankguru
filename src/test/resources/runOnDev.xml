@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Nop Commerce - User" parallel="false">
+
+
+    <listeners>
+        <listener class-name="commons.MethodListener"/>
+        <listener class-name="reportConfig.AllureTestListener"/>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+
+    <test name="Run on CHROME UI">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="bankguru.RegisterToSystem"/>
+            <class name="bankguru.Payment"/>
+        </classes>
+    </test>
+
+
+</suite>

@@ -1,0 +1,13 @@
+{
+  "customer_01": {
+    "customer_name": "Kaylee",
+    "gender": "female",
+    "date_of_birth": "1989-12-24",
+    "address": "123 Ho Tung Mau",
+    "city": "Ho Chi Minh",
+    "state": "Sai Gon",
+    "pin": "246357",
+    "mobile_number": "0968321654",
+    "password": "admin123"
+  }
+}
