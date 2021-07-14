@@ -137,4 +137,9 @@ public class NewCustomerPO extends AbstractPage {
         waitForElementVisible(driver, NewCustomerPageUI.EMAIL_AT_TABLE_DETAILS);
         return getElementText(driver, NewCustomerPageUI.EMAIL_AT_TABLE_DETAILS);
     }
+
+    public String getCustomerIDText() {
+        waitForElementVisible(driver, NewCustomerPageUI.CUSTOMER_ID_AT_TABLE_DETAILS);
+        return getElementText(driver, NewCustomerPageUI.CUSTOMER_ID_AT_TABLE_DETAILS);
+    }
 }

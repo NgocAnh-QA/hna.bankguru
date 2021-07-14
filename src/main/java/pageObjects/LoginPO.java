@@ -28,11 +28,11 @@ public class LoginPO extends AbstractPage {
         sendKeyToElement(driver, LoginPageUI.PASSWORD_TEXT_BOX, passwordValue);
     }
 
-    public HomePO loginToSystem(String emailValue, String passwordValue) {
+    public ManagerPO loginToSystem(String emailValue, String passwordValue) {
         inputToEmailTextBox(emailValue);
         inputToPasswordTextBox(passwordValue);
         waitForElementVisible(driver, LoginPageUI.LOGIN_BUTTON);
         clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
-        return PageGeneratorManager.getHomePage(driver);
+        return PageGeneratorManager.getManagerPage(driver);
     }
 }

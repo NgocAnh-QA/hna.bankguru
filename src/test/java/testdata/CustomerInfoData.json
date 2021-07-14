@@ -9,5 +9,17 @@
     "pin": "246357",
     "mobile_number": "0968321654",
     "password": "admin123"
+  },
+
+  "customer_02": {
+    "customer_name": "Kaylee",
+    "gender": "female",
+    "date_of_birth": "1989-12-24",
+    "address": "123 Nguyen Trai",
+    "city": "Ha Noi",
+    "state": "Nam Tu Liem",
+    "pin": "357246",
+    "mobile_number": "0968321654",
+    "password": "admin123"
   }
 }

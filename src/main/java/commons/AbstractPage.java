@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import pageObjects.NewCustomerPO;
 import pageUIs.AbstractPageUI;
 
 import java.text.ParseException;
@@ -1159,14 +1158,26 @@ public class AbstractPage {
         waitForElementClickable(driver, AbstractPageUI.DYNAMIC_NAV_LINK, textLink);
         clickToElement(driver, AbstractPageUI.DYNAMIC_NAV_LINK, textLink);
         switch (textLink){
+            case "Manager" :
+                return PageGeneratorManager.getManagerPage(driver);
             case "New Customer" :
                 return PageGeneratorManager.getNewCustomerPage(driver);
             case "Edit Customer" :
                 return PageGeneratorManager.getEditCustomerPage(driver);
             case "Delete Customer" :
                 return PageGeneratorManager.getDeleteCustomerPage(driver);
+            case "New Account" :
+                return PageGeneratorManager.getNewAccountPage(driver);
+            case "Edit Account" :
+                return PageGeneratorManager.getEditAccountPage(driver);
+            case "Deposit" :
+                return PageGeneratorManager.getDepositPage(driver);
+            case "Withdrawal" :
+                return PageGeneratorManager.getWithdrawalPage(driver);
+            case "Fund Transfer" :
+                return PageGeneratorManager.getFundTransferPage(driver);
             default:
-                return PageGeneratorManager.getHomePage(driver);
+                return PageGeneratorManager.getLoginPage(driver);
         }
 
     }

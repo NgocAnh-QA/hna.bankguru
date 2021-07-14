@@ -13,8 +13,8 @@ public class PageGeneratorManager {
         return new RegisterPO(driver);
     }
 
-    public static HomePO getHomePage(WebDriver driver) {
-        return new HomePO(driver);
+    public static ManagerPO getManagerPage(WebDriver driver) {
+        return new ManagerPO(driver);
     }
 
     public static NewCustomerPO getNewCustomerPage(WebDriver driver) {
@@ -27,6 +27,26 @@ public class PageGeneratorManager {
 
     public static DeleteCustomerPO getDeleteCustomerPage(WebDriver driver) {
         return new DeleteCustomerPO(driver);
+    }
+
+    public static NewAccountPO getNewAccountPage(WebDriver driver) {
+        return new NewAccountPO(driver);
+    }
+
+    public static EditAccountPO getEditAccountPage(WebDriver driver) {
+        return new EditAccountPO(driver);
+    }
+
+    public static DepositPO getDepositPage(WebDriver driver) {
+        return new DepositPO(driver);
+    }
+
+    public static WithdrawalPO getWithdrawalPage(WebDriver driver) {
+        return new WithdrawalPO(driver);
+    }
+
+    public static FundTransferPO getFundTransferPage(WebDriver driver) {
+        return new FundTransferPO(driver);
     }
 
 }

@@ -5,10 +5,10 @@ import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
 import pageUIs.LoginPageUI;
 
-public class HomePO extends AbstractPage {
+public class ManagerPO extends AbstractPage {
     WebDriver driver;
 
-    public HomePO(WebDriver driver){
+    public ManagerPO(WebDriver driver){
         this.driver = driver;
     }
 

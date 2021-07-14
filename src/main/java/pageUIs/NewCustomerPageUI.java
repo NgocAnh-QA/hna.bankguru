@@ -16,6 +16,7 @@ public class NewCustomerPageUI {
     public static final String SUCCESS_MESSAGE = "//p[text()='Customer Registered Successfully!!!']";
 
     public static final String CUSTOMER_NAME_AT_TABLE_DETAILS = "//td[text()='Customer Name']/following-sibling::td";
+    public static final String CUSTOMER_ID_AT_TABLE_DETAILS = "//td[text()='Customer ID']/following-sibling::td";
     public static final String GENDER_AT_TABLE_DETAILS = "//td[text()='Gender']/following-sibling::td";
     public static final String DATE_OF_BIRTH_AT_TABLE_DETAILS = "//td[text()='Birthdate']/following-sibling::td";
     public static final String ADDRESS_AT_TABLE_DETAILS = "//td[text()='Address']/following-sibling::td";

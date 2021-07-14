@@ -85,5 +85,77 @@ public class CustomerInfoData {
     public String getPassword_01() {
         return customer_01.password;
     }
+    
+    
+    /*****************************/
+
+
+    @JsonProperty("customer_02")
+    private Customer_02 customer_02;
+
+    static class Customer_02 {
+        @JsonProperty("customer_name")
+        private String customerName;
+
+        @JsonProperty("gender")
+        private String gender;
+
+        @JsonProperty("date_of_birth")
+        private String dateOfBirth;
+
+        @JsonProperty("address")
+        private String address;
+
+        @JsonProperty("city")
+        private String city;
+
+        @JsonProperty("state")
+        private String state;
+
+        @JsonProperty("pin")
+        private String pin;
+
+        @JsonProperty("mobile_number")
+        private String mobileNumber;
+
+        @JsonProperty("password")
+        private String password;
+    }
+
+    public String getCustomerName_02() {
+        return customer_02.customerName;
+    }
+
+    public String getGender_02() {
+        return customer_02.gender;
+    }
+
+    public String getDateOfBirth_02() {
+        return customer_02.dateOfBirth;
+    }
+
+    public String getAddress_02() {
+        return customer_02.address;
+    }
+
+    public String getCity_02() {
+        return customer_02.city;
+    }
+
+    public String getState_02() {
+        return customer_02.state;
+    }
+
+    public String getPin_02() {
+        return customer_02.pin;
+    }
+
+    public String getMobileNumber_02() {
+        return customer_02.mobileNumber;
+    }
+
+    public String getPassword_02() {
+        return customer_02.password;
+    }
 
 }
