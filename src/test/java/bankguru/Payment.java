@@ -468,6 +468,7 @@ public class Payment extends AbstractTest {
 
     @AfterClass
     public void afterClass() {
+        closeBrowserAndDriver(driver);
     }
 
 }
