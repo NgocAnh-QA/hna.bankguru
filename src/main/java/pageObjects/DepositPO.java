@@ -16,9 +16,9 @@ public class DepositPO extends AbstractPage {
         sendKeyToElement(driver, DepositPageUI.ACCOUNT_ID_TEXT_BOX, accountId);
     }
 
-    public void inputToAmountTextBox(String amount) {
+    public void inputToAmountTextBox(int amount) {
         waitForElementVisible(driver, DepositPageUI.AMOUNT_TEXT_BOX);
-        sendKeyToElement(driver, DepositPageUI.AMOUNT_TEXT_BOX, amount);
+        sendKeyToElement(driver, DepositPageUI.AMOUNT_TEXT_BOX, String.valueOf(amount));
     }
 
     public void inputToDescriptionTextBox(String description) {
@@ -38,8 +38,8 @@ public class DepositPO extends AbstractPage {
 
     }
 
-    public String getCurrentBalanceTextAtTableDetails() {
+    public int getCurrentBalanceTextAtTableDetails() {
         waitForElementVisible(driver, DepositPageUI.CURRENT_BALANCE_TEXT_AT_TABLE_DETAILS);
-        return getElementText(driver, DepositPageUI.CURRENT_BALANCE_TEXT_AT_TABLE_DETAILS);
+        return Integer.parseInt(getElementText(driver, DepositPageUI.CURRENT_BALANCE_TEXT_AT_TABLE_DETAILS));
     }
 }

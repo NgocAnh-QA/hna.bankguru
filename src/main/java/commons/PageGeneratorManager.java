@@ -49,4 +49,12 @@ public class PageGeneratorManager {
         return new FundTransferPO(driver);
     }
 
+    public static BalanceEnquiryPO getBalanceEnquiry(WebDriver driver) {
+        return new BalanceEnquiryPO(driver);
+    }
+
+    public static DeleteAccountPO getDeleteAccountPage(WebDriver driver) {
+        return new DeleteAccountPO(driver);
+    }
+
 }

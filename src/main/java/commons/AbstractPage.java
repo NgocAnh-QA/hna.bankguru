@@ -168,16 +168,17 @@ public class AbstractPage {
         }
     }
 
-    public void closeAllWindowsWithoutParent(WebDriver driver, String ID) {
+    public void closeAllWindowsWithoutParent(WebDriver driver, String IDParent) {
         try {
             Set<String> IdWinDows = driver.getWindowHandles();
             for (String a : IdWinDows) {
-                if (!a.equals(ID)) {
+                if (!a.equals(IDParent)) {
                     driver.switchTo().window(a);
                     sleepInSecond(2);
                     driver.close();
                 }
             }
+            driver.switchTo().window(IDParent);
         } catch (Exception e) {
             log.error("Cannot close all window without parent: " + e.getMessage());
         }
@@ -345,10 +346,10 @@ public class AbstractPage {
         return text;
     }
 
-    public String getFirstSelectedTextInDropdown(WebDriver driver, String locator, String...values) {
+    public String getFirstSelectedTextInDropdown(WebDriver driver, String locator, String... values) {
         String text = "";
         try {
-            element = getElement(driver, castToParameter(locator,values));
+            element = getElement(driver, castToParameter(locator, values));
             select = new Select(element);
             text = select.getFirstSelectedOption().getText();
         } catch (Exception e) {
@@ -780,6 +781,11 @@ public class AbstractPage {
         jsExecutor.executeScript("window.location='" + url + "'");
     }
 
+    public void openNewTab(WebDriver driver) {
+        jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("window.open();");
+    }
+
     public Object getDomainByJS(WebDriver driver) {
         jsExecutor = (JavascriptExecutor) driver;
         return jsExecutor.executeScript("return document.domain");
@@ -830,18 +836,21 @@ public class AbstractPage {
     public void highlightElement(WebDriver driver, String locator) {
         element = getElement(driver, locator);
         String originalStyle = element.getAttribute("style");
+        jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", "border: 2px solid red; border-style: dashed;");
         sleepInSecond(1);
         jsExecutor.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", originalStyle);
     }
 
     public boolean areExpectedTextInInnerText(WebDriver driver, String textExpected) {
+        jsExecutor = (JavascriptExecutor) driver;
         String textActual = (String) jsExecutor.executeScript("return document.documentElement.innerText.match('" + textExpected + "')[0]");
         return textActual.equals(textExpected);
     }
 
     public boolean isImageLoaded(WebDriver driver, String locator) {
         getElement(driver, locator);
+        jsExecutor = (JavascriptExecutor) driver;
         boolean status = (boolean) jsExecutor.executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth !=\"underfined\"&& arguments[0].naturalWidth > 0", getElement(driver, locator));
         if (status) {
             return true;
@@ -942,7 +951,7 @@ public class AbstractPage {
         return listItems;
     }
 
-    public List<String> getElementsText(WebDriver driver, String locator, String...values) {
+    public List<String> getElementsText(WebDriver driver, String locator, String... values) {
         List<WebElement> items = getElements(driver, castToParameter(locator, values));
         ArrayList<String> listItems = new ArrayList<String>();
         for (WebElement webElement : items) {
@@ -1157,25 +1166,45 @@ public class AbstractPage {
     public AbstractPage openNavLinkByText(WebDriver driver, String textLink) {
         waitForElementClickable(driver, AbstractPageUI.DYNAMIC_NAV_LINK, textLink);
         clickToElement(driver, AbstractPageUI.DYNAMIC_NAV_LINK, textLink);
-        switch (textLink){
-            case "Manager" :
+        switch (textLink) {
+            case "Manager":
                 return PageGeneratorManager.getManagerPage(driver);
-            case "New Customer" :
+            case "New Customer":
                 return PageGeneratorManager.getNewCustomerPage(driver);
-            case "Edit Customer" :
+            case "Edit Customer":
                 return PageGeneratorManager.getEditCustomerPage(driver);
-            case "Delete Customer" :
+            case "Delete Customer":
                 return PageGeneratorManager.getDeleteCustomerPage(driver);
-            case "New Account" :
+            case "New Account":
                 return PageGeneratorManager.getNewAccountPage(driver);
-            case "Edit Account" :
+            case "Edit Account":
                 return PageGeneratorManager.getEditAccountPage(driver);
-            case "Deposit" :
+            case "Deposit":
                 return PageGeneratorManager.getDepositPage(driver);
-            case "Withdrawal" :
+            case "Withdrawal":
                 return PageGeneratorManager.getWithdrawalPage(driver);
-            case "Fund Transfer" :
+            case "Fund Transfer":
                 return PageGeneratorManager.getFundTransferPage(driver);
+            case "Balance Enquiry":
+                return PageGeneratorManager.getBalanceEnquiry(driver);
+            case "Delete Account":
+                return PageGeneratorManager.getDeleteAccountPage(driver);
+            default:
+                return PageGeneratorManager.getLoginPage(driver);
+        }
+
+    }
+
+    public AbstractPage openNavLinkByTextInNewTab(WebDriver driver, String textLink) {
+        jsExecutor = (JavascriptExecutor) driver;
+        String url = driver.findElement(By.linkText(textLink)).getAttribute("href");
+        openNewTab(driver);
+        String childID = getWindowID(driver);
+        switchWindowByID(driver, childID);
+        navigateToUrlByJS(driver, url);
+        switch (textLink) {
+            case "New Account":
+                return PageGeneratorManager.getNewAccountPage(driver);
             default:
                 return PageGeneratorManager.getLoginPage(driver);
         }

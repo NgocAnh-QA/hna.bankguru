@@ -18,9 +18,9 @@ public class WithdrawalPO extends AbstractPage {
         sendKeyToElement(driver, WithdrawalPageUI.ACCOUNT_ID_TEXT_BOX, accountId);
     }
 
-    public void inputToAmountTextBox(String amount) {
+    public void inputToAmountTextBox(int amount) {
         waitForElementVisible(driver, WithdrawalPageUI.AMOUNT_TEXT_BOX);
-        sendKeyToElement(driver, WithdrawalPageUI.AMOUNT_TEXT_BOX, amount);
+        sendKeyToElement(driver, WithdrawalPageUI.AMOUNT_TEXT_BOX, String.valueOf(amount));
     }
 
     public void inputToDescriptionTextBox(String description) {
@@ -40,8 +40,8 @@ public class WithdrawalPO extends AbstractPage {
 
     }
 
-    public String getCurrentBalanceTextAtTableDetails() {
+    public int getCurrentBalanceTextAtTableDetails() {
         waitForElementVisible(driver, WithdrawalPageUI.CURRENT_BALANCE_TEXT_AT_TABLE_DETAILS);
-        return getElementText(driver, WithdrawalPageUI.CURRENT_BALANCE_TEXT_AT_TABLE_DETAILS);
+        return Integer.parseInt(getElementText(driver, WithdrawalPageUI.CURRENT_BALANCE_TEXT_AT_TABLE_DETAILS));
     }
 }
