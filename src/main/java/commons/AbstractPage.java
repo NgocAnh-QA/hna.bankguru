@@ -1,5 +1,6 @@
 package commons;
 
+import io.qameta.allure.Step;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.*;
@@ -1163,6 +1164,7 @@ public class AbstractPage {
 
     /***************************************************************************/
 
+    @Step("Open nav link {1}")
     public AbstractPage openNavLinkByText(WebDriver driver, String textLink) {
         waitForElementClickable(driver, AbstractPageUI.DYNAMIC_NAV_LINK, textLink);
         clickToElement(driver, AbstractPageUI.DYNAMIC_NAV_LINK, textLink);
@@ -1195,6 +1197,8 @@ public class AbstractPage {
 
     }
 
+
+    @Step("Open nav link {0}")
     public AbstractPage openNavLinkByTextInNewTab(WebDriver driver, String textLink) {
         jsExecutor = (JavascriptExecutor) driver;
         String url = driver.findElement(By.linkText(textLink)).getAttribute("href");

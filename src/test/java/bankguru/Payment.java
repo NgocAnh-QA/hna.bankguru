@@ -4,6 +4,8 @@ import commons.AbstractTest;
 import commons.Environment;
 import commons.GlobalConstants;
 import commons.PageGeneratorManager;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
@@ -12,8 +14,8 @@ import testdata.CustomerInfoData;
 
 import java.io.File;
 
+@Feature("Payment Test")
 public class Payment extends AbstractTest {
-    int randomNumber = getRandomNumber();
     WebDriver driver;
     Environment evn;
     private LoginPO loginPage;
@@ -58,6 +60,7 @@ public class Payment extends AbstractTest {
 
     }
 
+    @Story("Create new customer")
     @Test
     public void TC_01_Create_New_Customer() {
         log.info("Payment - Create new customer - Step 01: Open New Customer link");
@@ -134,6 +137,7 @@ public class Payment extends AbstractTest {
 
     }
 
+    @Story("Edit customer")
     @Test
     public void TC_02_Edit_Customer() {
         log.info("Payment - Edit customer - Step 01: Open Edit Customer link");
@@ -194,6 +198,7 @@ public class Payment extends AbstractTest {
         managerPage = (ManagerPO) editCustomerPage.openNavLinkByText(driver, "Manager");
     }
 
+    @Story("Add new account and verify current amount equals initial deposit")
     @Test
     public void TC_03_Add_New_Account_And_Verify_Current_Amount_Equals_Initial_Deposit() {
         log.info("Payment - Add new account and verify current amount equals initial deposit - Step 01: Open New Account link");
@@ -226,13 +231,14 @@ public class Payment extends AbstractTest {
 
     }
 
+    @Story("Edit account and check type of account")
     @Test
     public void TC_04_Edit_Account_And_Check_Type_Of_Account() {
         log.info("Payment - Edit account and check type of account - Step 01: Open Edit Account link");
         editAccountPage = (EditAccountPO) managerPage.openNavLinkByText(driver, "Edit Account");
 
         log.info("Payment - Edit account and check type of account - Step 02: Input to Account No text box with value: " + ACCOUNT_ID);
-        editAccountPage.inputToAccountIDTextbox(ACCOUNT_ID);
+        editAccountPage.inputToAccountIDTextBox(ACCOUNT_ID);
 
         log.info("Payment - Edit account and check type of account - Step 03: Click to submit button");
         editAccountPage.clickToSubmitButton();
@@ -256,6 +262,7 @@ public class Payment extends AbstractTest {
         managerPage = (ManagerPO) editAccountPage.openNavLinkByText(driver, "Manager");
     }
 
+    @Story("Transfer money into a current account and check account balance")
     @Test
     public void TC_05_Transfer_Money_Into_A_Current_Account_And_Check_Account_Balance() {
         log.info("Payment - Transfer money into a current account and check account balance - Step 01: Open Deposit");
@@ -283,6 +290,7 @@ public class Payment extends AbstractTest {
         managerPage = (ManagerPO) depositPage.openNavLinkByText(driver, "Manager");
     }
 
+    @Story("Withdrawal money from current account and check account balance")
     @Test
     public void TC_06_Withdrawal_Money_From_Current_Account_And_Check_Account_Balance() {
         log.info("Payment - Withdrawal money from current account and check account balance - Step 01: Open Withdrawal");
@@ -310,6 +318,7 @@ public class Payment extends AbstractTest {
         managerPage = (ManagerPO) withdrawalPage.openNavLinkByText(driver, "Manager");
     }
 
+    @Story("Transfer money into another account and check account balance")
     @Test
     public void TC_07_Transfer_Money_Into_Another_Account_And_Check_Account_Balance() {
         log.info("Payment - Transfer money into another account and check account balance - Step 01: Open Fund Transfer");
@@ -351,6 +360,7 @@ public class Payment extends AbstractTest {
         managerPage = (ManagerPO) fundTransferPage.openNavLinkByText(driver, "Manager");
     }
 
+    @Story("Check current account balance")
     @Test
     public void TC_08_Check_Current_Account_Balance() {
         log.info("Payment - Check current account balance - Step 01: Open Balance Enquiry page");
@@ -372,6 +382,7 @@ public class Payment extends AbstractTest {
         managerPage = (ManagerPO) balanceEnquiryPage.openNavLinkByText(driver, "Manager");
     }
 
+    @Story("Delete all accounts of this customer")
     @Test
     public void TC_09_Delete_All_Accounts_Of_This_Customer() {
         log.info("Payment - Delete all accounts of this customer - Step 01: Open Delete Account page");
@@ -397,7 +408,7 @@ public class Payment extends AbstractTest {
         editAccountPage = (EditAccountPO) managerPage.openNavLinkByText(driver, "Edit Account");
 
         log.info("Payment - Delete all accounts of this customer - Step 08: Input to Account No that already been deleted");
-        editAccountPage.inputToAccountIDTextbox(ACCOUNT_ID);
+        editAccountPage.inputToAccountIDTextBox(ACCOUNT_ID);
 
         log.info("Payment - Delete all accounts of this customer - Step 09: Click to Submit button");
         editAccountPage.clickToSubmitButton();
@@ -429,6 +440,7 @@ public class Payment extends AbstractTest {
         managerPage = PageGeneratorManager.getManagerPage(driver);
     }
 
+    @Story("Delete exist customer")
     @Test
     public void TC_10_Delete_Exist_Customer() {
         log.info("Payment - Delete exist customer - Step 01: Open Delete Customer page");

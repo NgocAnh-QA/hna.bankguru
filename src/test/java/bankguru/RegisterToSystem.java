@@ -3,12 +3,14 @@ package bankguru;
 import commons.AbstractTest;
 import commons.Environment;
 import commons.PageGeneratorManager;
+import io.qameta.allure.Feature;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 import pageObjects.LoginPO;
 import pageObjects.RegisterPO;
 
+@Feature("Register to system")
 public class RegisterToSystem extends AbstractTest {
     public static String USERID, PASSWORD;
     static int randomNumber = getRandomNumber();
